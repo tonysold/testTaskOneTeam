@@ -1,0 +1,25 @@
+name: oneteam
+
+services:
+  # PHP FPM Service
+  php:
+    container_name: php_oneteam
+    build:
+      context: .
+    volumes:
+      - '../:/var/www/'
+      - './php-logging.conf:/usr/local/etc/php-fpm.d/zz-log.conf'
+
+  # Nginx Service
+  nginx:
+    container_name: nginx_oneteam
+    image: nginx:latest
+    ports:
+      - 8081:80
+    links:
+      - 'php'
+    volumes:
+      - '../:/var/www/'
+      - './nginx-conf:/etc/nginx/conf.d'
+    depends_on:
+      - php

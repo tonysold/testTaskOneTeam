@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Форма загрузки файла и вставки URL</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Загрузка файла</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+          <input type="file" name="file" id="file">
+          <input type="submit" value="Загрузить">
+        </form>
+      
+        <h1>Вставка URL</h1>
+        <form action="/insert" method="post">
+          <input type="text" name="url" id="url" placeholder="Введите URL">
+          <input type="submit" value="Вставить">
+        </form>
+      
+        <h1>Вставка для переменной</h1>
+        <form action="/processing" method="post">
+          <label for="paste">Введите данные переменной</label>
+          <br>
+          <textarea name="paste" id="paste" cols="50" rows="10"></textarea>
+          <input type="submit" value="Вставить">
+        </form>
+      </div>
+</body>
+</html>
+
