@@ -9,9 +9,7 @@ WORKDIR /var/www
 # Обновление системы
 RUN apt-get update && apt-get upgrade -y \
     && apt-get install apt-utils -y
-# Добавляем права
-RUN chmod -R 755 /var/www/testTaskOneTeam
-RUN chmod -R 777 /var/www/testTaskOneTeam/App/InputDataProcessing/files
+
 # Устанавливаем необходимые пакеты
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -39,5 +37,4 @@ RUN apt-get autoremove --purge -y && apt-get autoclean -y && apt-get clean -y
 # Настройка пользователя для работы контейнера и взаимодействия прав
 RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
-
-USER www
+USER root
